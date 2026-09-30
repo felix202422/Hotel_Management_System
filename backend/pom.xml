@@ -9,11 +9,11 @@
         <version>4.1.1</version>
         <relativePath/>
     </parent>
-    <groupId>com.hasmirhotels</groupId>
-    <artifactId>hasmir-hotels-backend</artifactId>
+    <groupId>com.fizzohotels</groupId>
+    <artifactId>fizzo-hotels-backend</artifactId>
     <version>2.0.0</version>
-    <name>Hasmir Hotels Backend</name>
-    <description>Backend for Hasmir Hotels Reservation and Management System</description>
+    <name>Fizzo Hotels Backend</name>
+    <description>Backend for Fizzo Hotels Reservation and Management System</description>
 
     <properties>
         <java.version>25</java.version>

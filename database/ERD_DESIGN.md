@@ -1,4 +1,4 @@
-# HASMIR HOTELS - Entity Relationship Diagram
+# FIZZO HOTELS - Entity Relationship Diagram
 
 ```
 ┌──────────────┐

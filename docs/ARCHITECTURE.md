@@ -1,6 +1,6 @@
 # Architecture
 
-Hasmir Hotels is a full-stack hotel reservation and management system: a React SPA talking to a Spring Boot REST API over PostgreSQL.
+Fizzo Hotels is a full-stack hotel reservation and management system: a React SPA talking to a Spring Boot REST API over PostgreSQL.
 
 ## High-Level View
 
@@ -18,7 +18,7 @@ Hasmir Hotels is a full-stack hotel reservation and management system: a React S
 └──────────────┬──────────────┘
                │ Spring Data JPA / Hibernate
 ┌──────────────▼──────────────┐
-│  PostgreSQL (hasmir_hotels_db) │
+│  PostgreSQL (fizzo_hotels_db) │
 └─────────────────────────────┘
 ```
 

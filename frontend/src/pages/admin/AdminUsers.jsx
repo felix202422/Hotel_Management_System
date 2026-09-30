@@ -4,14 +4,14 @@ import api from '../../api/axios'
 import Modal from '../../components/Modal'
 
 const FALLBACK_USERS = [
-  { id: 1, name: 'Admin User', email: 'admin@hasmir.com', role: 'Admin', status: 'Active', lastLogin: '2026-08-29 09:15' },
-  { id: 2, name: 'Sarah Johnson', email: 'sarah@hasmir.com', role: 'Manager', status: 'Active', lastLogin: '2026-08-29 08:30' },
-  { id: 3, name: 'Mike Peters', email: 'mike@hasmir.com', role: 'Receptionist', status: 'Active', lastLogin: '2026-08-28 17:45' },
-  { id: 4, name: 'Lisa Chen', email: 'lisa@hasmir.com', role: 'Housekeeper', status: 'Active', lastLogin: '2026-08-29 07:00' },
-  { id: 5, name: 'Tom Wilson', email: 'tom@hasmir.com', role: 'Receptionist', status: 'Inactive', lastLogin: '2026-08-15 12:00' },
-  { id: 6, name: 'Anna Brown', email: 'anna@hasmir.com', role: 'Manager', status: 'Active', lastLogin: '2026-08-29 10:20' },
-  { id: 7, name: 'James Davis', email: 'james@hasmir.com', role: 'Receptionist', status: 'Active', lastLogin: '2026-08-29 06:55' },
-  { id: 8, name: 'Rachel Kim', email: 'rachel@hasmir.com', role: 'Housekeeper', status: 'Inactive', lastLogin: '2026-07-20 14:30' },
+  { id: 1, name: 'Admin User', email: 'admin@fizzo.com', role: 'Admin', status: 'Active', lastLogin: '2026-08-29 09:15' },
+  { id: 2, name: 'Sarah Johnson', email: 'sarah@fizzo.com', role: 'Manager', status: 'Active', lastLogin: '2026-08-29 08:30' },
+  { id: 3, name: 'Mike Peters', email: 'mike@fizzo.com', role: 'Receptionist', status: 'Active', lastLogin: '2026-08-28 17:45' },
+  { id: 4, name: 'Lisa Chen', email: 'lisa@fizzo.com', role: 'Housekeeper', status: 'Active', lastLogin: '2026-08-29 07:00' },
+  { id: 5, name: 'Tom Wilson', email: 'tom@fizzo.com', role: 'Receptionist', status: 'Inactive', lastLogin: '2026-08-15 12:00' },
+  { id: 6, name: 'Anna Brown', email: 'anna@fizzo.com', role: 'Manager', status: 'Active', lastLogin: '2026-08-29 10:20' },
+  { id: 7, name: 'James Davis', email: 'james@fizzo.com', role: 'Receptionist', status: 'Active', lastLogin: '2026-08-29 06:55' },
+  { id: 8, name: 'Rachel Kim', email: 'rachel@fizzo.com', role: 'Housekeeper', status: 'Inactive', lastLogin: '2026-07-20 14:30' },
 ]
 
 const EMPTY_FORM = { name: '', email: '', role: 'Receptionist', password: '' }

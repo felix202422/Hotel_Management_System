@@ -60,7 +60,7 @@ const s = {
 const ACTIVITIES = [
   { text: 'Booking BK-1001 confirmed', color: '#22C55E', time: '2 hours ago' },
   { text: 'Profile updated', color: '#3B82F6', time: '1 day ago' },
-  { text: 'Welcome to Hasmir Hotels!', color: '#9333EA', time: '2 days ago' },
+  { text: 'Welcome to Fizzo Hotels!', color: '#9333EA', time: '2 days ago' },
 ]
 
 export default function GuestDashboard() {

@@ -10,5 +10,5 @@
 /database/ @felix202422
 
 # Security-sensitive configuration
-/backend/src/main/java/com/hasmirhotels/security/ @felix202422
+/backend/src/main/java/com/fizzohotels/security/ @felix202422
 /backend/src/main/resources/application.properties @felix202422

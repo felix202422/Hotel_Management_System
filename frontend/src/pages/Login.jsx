@@ -65,7 +65,7 @@ export default function Login() {
       <div className="login-card">
         <div className="login-header">
           <div className="login-icon"><Hotel size={28} /></div>
-          <h1>Hasmir Hotels</h1>
+          <h1>Fizzo Hotels</h1>
           <p>Sign in to your account</p>
         </div>
 

@@ -14,9 +14,9 @@ const LANGUAGES = [
 
 export default function AdminSettings() {
   const [hotel, setHotel] = useState({
-    name: 'Hasmir Hotels',
+    name: 'Fizzo Hotels',
     tagline: 'Where Luxury Meets Comfort',
-    email: 'info@hasmirhotels.com',
+    email: 'info@fizzohotels.com',
     phone: '+1-555-0100',
     address: '123 Grand Avenue, Downtown City, DC 10001',
   })

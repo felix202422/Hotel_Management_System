@@ -215,7 +215,7 @@ export default function VisitorHome() {
             </div>
             <h1 style={s.heroTitle}>
               Welcome to<br />
-              <span style={{ color: '#60A5FA' }}>Hasmir Hotels</span>
+              <span style={{ color: '#60A5FA' }}>Fizzo Hotels</span>
             </h1>
             <p style={s.heroTagline}>
               Comfort &bull; Luxury &bull; Smart Hospitality<br />
@@ -367,7 +367,7 @@ export default function VisitorHome() {
                 <Mail size={24} />
               </div>
               <h4 style={{ fontWeight: 700, marginBottom: 6 }}>Email</h4>
-              <p style={{ fontSize: '0.88rem', opacity: 0.7 }}>info@hasmirhotels.com<br />reservations@hasmirhotels.com</p>
+              <p style={{ fontSize: '0.88rem', opacity: 0.7 }}>info@fizzohotels.com<br />reservations@fizzohotels.com</p>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-# Hasmir Hotels Reservation & Management System — Setup Guide
+# Fizzo Hotels Reservation & Management System — Setup Guide
 
 ## 1. Prerequisites
 
@@ -35,22 +35,22 @@ psql -U postgres
 ```
 
 ```sql
-CREATE DATABASE hasmir_hotels;
+CREATE DATABASE fizzo_hotels;
 \q
 ```
 
-Or create it via pgAdmin by right-clicking **Databases** → **Create** → **Database** and entering `hasmir_hotels`.
+Or create it via pgAdmin by right-clicking **Databases** → **Create** → **Database** and entering `fizzo_hotels`.
 
 ### 2.3 Run the Schema Script
 
 ```bash
-psql -U postgres -d hasmir_hotels -f database/schema.sql
+psql -U postgres -d fizzo_hotels -f database/schema.sql
 ```
 
 ### 2.4 (Optional) Load Sample Data
 
 ```bash
-psql -U postgres -d hasmir_hotels -f database/seed-data.sql
+psql -U postgres -d fizzo_hotels -f database/seed-data.sql
 ```
 
 > **Note:** The application can also seed default data on first run via Spring Boot. Running the SQL script manually is optional.
@@ -70,7 +70,7 @@ cd backend
 Open `src/main/resources/application.properties` and update:
 
 ```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/hasmir_hotels
+spring.datasource.url=jdbc:postgresql://localhost:5432/fizzo_hotels
 spring.datasource.username=postgres
 spring.datasource.password=your_postgres_password
 ```
@@ -202,11 +202,11 @@ Base URL: `http://localhost:8080/api`
 ## 8. Project Structure
 
 ```
-hasmir-hotels/
+fizzo-hotels/
 ├── backend/                      # Spring Boot REST API
 │   ├── src/
 │   │   ├── main/
-│   │   │   ├── java/com/hasmir/hotels/
+│   │   │   ├── java/com/fizzo/hotels/
 │   │   │   │   ├── controller/   # REST controllers
 │   │   │   │   ├── service/      # Business logic
 │   │   │   │   ├── repository/   # JPA repositories

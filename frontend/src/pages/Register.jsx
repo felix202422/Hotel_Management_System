@@ -59,7 +59,7 @@ export default function Register() {
         <div className="login-header">
           <div className="login-icon"><Hotel size={28} /></div>
           <h1>Create Account</h1>
-          <p>Register as a guest at Hasmir Hotels</p>
+          <p>Register as a guest at Fizzo Hotels</p>
         </div>
         <form onSubmit={handleSubmit}>
           {error && <div className="login-error">{error}</div>}

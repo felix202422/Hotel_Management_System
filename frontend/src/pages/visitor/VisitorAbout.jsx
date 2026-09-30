@@ -1,7 +1,7 @@
 import { Award, Heart, Shield, Leaf, Users, Target } from 'lucide-react'
 
 const TEAM = [
-  { name: 'Ahmad Hasmir', role: 'Founder & CEO', bio: 'With over 20 years in hospitality, Ahmad founded Hasmir Hotels with a vision to redefine luxury accommodation.', avatar: 'AH' },
+  { name: 'Ahmad Fizzo', role: 'Founder & CEO', bio: 'With over 20 years in hospitality, Ahmad founded Fizzo Hotels with a vision to redefine luxury accommodation.', avatar: 'AH' },
   { name: 'Sarah Mitchell', role: 'General Manager', bio: 'Sarah brings 15 years of international hotel management experience, ensuring every guest receives exceptional service.', avatar: 'SM' },
   { name: 'David Chen', role: 'Head of Operations', bio: 'David oversees day-to-day operations with a focus on efficiency, sustainability, and guest satisfaction.', avatar: 'DC' },
   { name: 'Elena Rodriguez', role: 'Executive Chef', bio: 'Award-winning chef Elena curates menus that celebrate local flavors while showcasing international culinary excellence.', avatar: 'ER' },
@@ -62,7 +62,7 @@ export default function VisitorAbout() {
   return (
     <div>
       <div style={s.hero}>
-        <h1 style={s.heroTitle}>About Hasmir Hotels</h1>
+        <h1 style={s.heroTitle}>About Fizzo Hotels</h1>
         <p style={s.heroSub}>
           A legacy of excellence in hospitality, built on passion, dedication, and an unwavering commitment to our guests.
         </p>
@@ -75,13 +75,13 @@ export default function VisitorAbout() {
             <h2 style={s.sectionTitle}>Our Story</h2>
             <div style={s.storyText}>
               <p style={{ marginBottom: 16 }}>
-                Founded in 2005, Hasmir Hotels began as a small family-run boutique hotel with a big dream: to create a place where every guest feels at home while experiencing the finest in luxury hospitality.
+                Founded in 2005, Fizzo Hotels began as a small family-run boutique hotel with a big dream: to create a place where every guest feels at home while experiencing the finest in luxury hospitality.
               </p>
               <p style={{ marginBottom: 16 }}>
                 Over the past two decades, we have grown from a single property to a respected name in the hospitality industry. Our journey has been defined by an unwavering commitment to quality, innovation, and genuine warmth.
               </p>
               <p>
-                Today, Hasmir Hotels stands as a symbol of modern luxury blended with timeless hospitality values. We continue to evolve, embracing new technologies and sustainable practices while never losing sight of what matters most: our guests.
+                Today, Fizzo Hotels stands as a symbol of modern luxury blended with timeless hospitality values. We continue to evolve, embracing new technologies and sustainable practices while never losing sight of what matters most: our guests.
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function VisitorAbout() {
       <div style={s.wideSection}>
         <h2 style={{ ...s.sectionTitle, textAlign: 'center', marginBottom: 8 }}>Meet Our Team</h2>
         <p style={{ textAlign: 'center', color: '#6B7280', marginBottom: 40, fontSize: '0.95rem' }}>
-          The passionate people behind Hasmir Hotels
+          The passionate people behind Fizzo Hotels
         </p>
         <div style={s.teamGrid}>
           {TEAM.map(m => (

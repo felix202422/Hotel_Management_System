@@ -34,7 +34,7 @@ export default function Sidebar({ collapsed }) {
     <aside className={`sidebar${collapsed ? ' collapsed' : ''}`}>
       <div className="sidebar-brand">
         <div className="brand-icon"><Hotel size={24} /></div>
-        {!collapsed && <h2>Hasmir Hotels</h2>}
+        {!collapsed && <h2>Fizzo Hotels</h2>}
       </div>
 
       <nav className="sidebar-nav">

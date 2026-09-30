@@ -153,7 +153,7 @@ export default function VisitorLayout() {
         <div style={s.topBarInner}>
           <div style={s.topBarInfo}>
             <span style={s.topBarItem}><Phone size={13} /> +1 (555) 123-4567</span>
-            <span style={s.topBarItem}><Mail size={13} /> info@hasmirhotels.com</span>
+            <span style={s.topBarItem}><Mail size={13} /> info@fizzohotels.com</span>
           </div>
           <div style={s.topBarItem}>
             <MapPin size={13} /> 123 Luxury Avenue, Metro City
@@ -165,7 +165,7 @@ export default function VisitorLayout() {
         <div style={s.headerInner}>
           <Link to="/" style={s.logo}>
             <div style={s.logoIcon}>H</div>
-            Hasmir Hotels
+            Fizzo Hotels
           </Link>
 
           <nav style={s.nav} className="visitor-nav">
@@ -194,7 +194,7 @@ export default function VisitorLayout() {
         <div style={s.mobileMenu} onClick={() => setMobileOpen(false)}>
           <div style={s.mobileMenuPanel} onClick={e => e.stopPropagation()}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-              <span style={{ fontWeight: 800, fontSize: '1.1rem', color: '#3B82F6' }}>Hasmir Hotels</span>
+              <span style={{ fontWeight: 800, fontSize: '1.1rem', color: '#3B82F6' }}>Fizzo Hotels</span>
               <button onClick={() => setMobileOpen(false)} style={{ padding: 4 }}><X size={22} /></button>
             </div>
             {NAV_LINKS.map(link => (
@@ -231,7 +231,7 @@ export default function VisitorLayout() {
             <div>
               <div style={{ ...s.footerColTitle, display: 'flex', alignItems: 'center', gap: 8 }}>
                 <div style={{ ...s.logoIcon, width: 32, height: 32, fontSize: '0.85rem' }}>H</div>
-                Hasmir Hotels
+                Fizzo Hotels
               </div>
               <p style={{ fontSize: '0.85rem', lineHeight: 1.7, marginBottom: 16 }}>
                 Experience luxury and comfort at its finest. Where every stay becomes a cherished memory.
@@ -255,7 +255,7 @@ export default function VisitorLayout() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.85rem' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><MapPin size={15} /> 123 Luxury Avenue, Metro City</span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Phone size={15} /> +1 (555) 123-4567</span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Mail size={15} /> info@hasmirhotels.com</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Mail size={15} /> info@fizzohotels.com</span>
               </div>
             </div>
             <div>
@@ -269,7 +269,7 @@ export default function VisitorLayout() {
             </div>
           </div>
           <div style={s.footerBottom}>
-            &copy; {new Date().getFullYear()} Hasmir Hotels. All rights reserved.
+            &copy; {new Date().getFullYear()} Fizzo Hotels. All rights reserved.
           </div>
         </div>
       </footer>

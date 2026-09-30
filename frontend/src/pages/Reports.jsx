@@ -54,7 +54,7 @@ export default function Reports() {
 
           <div className="card" style={{ marginBottom: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
-              <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>Hasmir Hotels - Performance Report</h3>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>Fizzo Hotels - Performance Report</h3>
               <p style={{ color: 'var(--muted)', fontSize: '0.8rem', marginTop: 2 }}>Period: February - July 2026 | Generated: {new Date().toLocaleDateString()}</p>
             </div>
             <div className="badge badge-green" style={{ fontSize: '0.8rem', padding: '6px 16px' }}>Final</div>

@@ -1,11 +1,11 @@
--- HASMIR HOTELS Reservation & Management System
+-- FIZZO HOTELS Reservation & Management System
 -- PostgreSQL Database Schema
 
 -- Create Database
-CREATE DATABASE hasmir_hotels_db;
+CREATE DATABASE fizzo_hotels_db;
 
 -- Connect to database
-\c hasmir_hotels_db;
+\c fizzo_hotels_db;
 
 -- Users Table (Parent)
 CREATE TABLE IF NOT EXISTS admins (

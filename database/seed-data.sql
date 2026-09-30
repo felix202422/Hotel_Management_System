@@ -1,5 +1,5 @@
 -- ============================================================
--- Hasmir Hotels Reservation & Management System
+-- Fizzo Hotels Reservation & Management System
 -- Seed / Sample Data
 -- ============================================================
 
@@ -9,7 +9,7 @@
 INSERT INTO admin (full_name, email, password, username, role)
 VALUES (
     'System Admin',
-    'admin@hasmirhotels.com',
+    'admin@fizzohotels.com',
     '$2a$10$PlaceholderBcryptHashForAdminPassword1234567890ABCDEF',
     'admin',
     'ADMIN'

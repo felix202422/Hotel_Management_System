@@ -1,6 +1,6 @@
-# Contributing to Hasmir Hotels
+# Contributing to Fizzo Hotels
 
-Thanks for your interest in improving the Hasmir Hotels Reservation & Management System! This guide covers everything you need to start contributing.
+Thanks for your interest in improving the Fizzo Hotels Reservation & Management System! This guide covers everything you need to start contributing.
 
 ## Code of Conduct
 

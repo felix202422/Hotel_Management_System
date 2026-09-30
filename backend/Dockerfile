@@ -15,7 +15,7 @@ WORKDIR /app
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring
 
-COPY --from=build /app/target/hasmir-hotels-backend-*.jar app.jar
+COPY --from=build /app/target/fizzo-hotels-backend-*.jar app.jar
 
 EXPOSE 8081
 

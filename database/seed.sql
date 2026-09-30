@@ -1,6 +1,6 @@
 -- Admin
 INSERT INTO admins (full_name, email, password, username, role) VALUES
-('Admin Hasmir', 'admin@hasmirhotels.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin', 'ADMIN');
+('Admin Fizzo', 'admin@fizzohotels.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin', 'ADMIN');
 -- Default password is 'admin123' (BCrypt encoded)
 
 -- Rooms (30 rooms across 5 floors)

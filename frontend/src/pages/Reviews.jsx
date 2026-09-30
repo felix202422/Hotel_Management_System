@@ -80,7 +80,7 @@ export default function Reviews() {
             {r.replies.map((rep, i) => (
               <div key={i} style={{ marginTop: 12, marginLeft: 44, padding: '10px 14px', background: 'var(--bg)', borderRadius: 12, fontSize: '0.82rem', color: '#475569' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                  <span style={{ fontWeight: 600, fontSize: '0.75rem' }}>Hasmir Hotels</span>
+                  <span style={{ fontWeight: 600, fontSize: '0.75rem' }}>Fizzo Hotels</span>
                   <span style={{ fontSize: '0.68rem', color: 'var(--muted)' }}>{rep.date}</span>
                 </div>
                 {rep.text}

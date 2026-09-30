@@ -1,4 +1,4 @@
-# Hasmir Hotels Reservation & Management System
+# Fizzo Hotels Reservation & Management System
 
 [![CI](https://github.com/felix202422/Hotel_Management_System/actions/workflows/ci.yml/badge.svg)](https://github.com/felix202422/Hotel_Management_System/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -70,7 +70,7 @@ docker compose up --build
 ## Database Setup
 
 1. Install PostgreSQL
-2. Create the database: `hasmir_hotels_db`
+2. Create the database: `fizzo_hotels_db`
 3. Run `database/schema.sql` and `database/seed.sql` (optional — the backend also seeds demo data on first startup)
 4. Configure credentials via environment variables (see **Backend Configuration** below)
 
@@ -90,7 +90,7 @@ cp .env.example .env   # then edit .env with your real values
 
 | Variable | Purpose | Notes |
 |----------|---------|-------|
-| `DB_URL` | PostgreSQL JDBC URL | default `jdbc:postgresql://localhost:5432/hasmir_hotels_db` |
+| `DB_URL` | PostgreSQL JDBC URL | default `jdbc:postgresql://localhost:5432/fizzo_hotels_db` |
 | `DB_USERNAME` | Database user | default `postgres` |
 | `DB_PASSWORD` | Database password | **required** — no default |
 | `JWT_SECRET` | JWT signing key | **required** — 32+ chars for HS256 (`openssl rand -base64 48`) |
@@ -203,7 +203,7 @@ Role-based access is enforced server-side in `SecurityConfig`. Unauthenticated r
 ```
 ├── backend/                  # Spring Boot application (port 8081)
 │   ├── pom.xml
-│   └── src/main/java/com/hasmirhotels/
+│   └── src/main/java/com/fizzohotels/
 │       ├── config/           # CORS configuration
 │       ├── controller/       # 16 REST controllers
 │       ├── dto/              # Request/response DTOs, ApiResponse envelope
@@ -236,4 +236,4 @@ MIT
 
 ## Author
 
-Hasmir Hotels Development Team
+Fizzo Hotels Development Team

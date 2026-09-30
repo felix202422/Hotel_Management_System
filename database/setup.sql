@@ -1,10 +1,10 @@
 -- =============================================
--- HASMIR HOTELS - Database Setup Script
+-- FIZZO HOTELS - Database Setup Script
 -- PostgreSQL Database Creation
 -- =============================================
 
 -- Run this script in pgAdmin or psql
-CREATE DATABASE hasmir_hotels_db;
+CREATE DATABASE fizzo_hotels_db;
 
 -- The tables below are auto-created by Spring Boot JPA (ddl-auto=update)
 -- But here is the schema reference:
@@ -19,7 +19,7 @@ CREATE DATABASE hasmir_hotels_db;
 -- housekeeping
 
 -- Default admin credentials:
--- Email:    admin@hasmirhotels.com
+-- Email:    admin@fizzohotels.com
 -- Password: admin123
 
 -- Sample data is auto-loaded via DataInitializer.java on first run.

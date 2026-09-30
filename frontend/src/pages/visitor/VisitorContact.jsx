@@ -151,8 +151,8 @@ export default function VisitorContact() {
               <div style={{ ...s.infoIcon, background: '#FEF9C3', color: '#CA8A04' }}><Mail size={22} /></div>
               <div>
                 <h4 style={{ fontWeight: 700, marginBottom: 4 }}>Email</h4>
-                <p style={{ color: '#6B7280', fontSize: '0.88rem' }}>info@hasmirhotels.com</p>
-                <p style={{ color: '#6B7280', fontSize: '0.88rem' }}>reservations@hasmirhotels.com</p>
+                <p style={{ color: '#6B7280', fontSize: '0.88rem' }}>info@fizzohotels.com</p>
+                <p style={{ color: '#6B7280', fontSize: '0.88rem' }}>reservations@fizzohotels.com</p>
               </div>
             </div>
             <div style={s.infoCard}>
