@@ -1,0 +1,229 @@
+{
+  "info": {
+    "name": "Hasmir Hotels API",
+    "description": "REST API collection for the Hasmir Hotels Reservation & Management System.\n\n## Getting started\n1. Start the backend: `cd backend && mvn spring-boot:run` (base URL http://localhost:8081)\n2. Run **Auth → Staff login** with `admin` / `admin123`\n3. The token is stored automatically in the `token` collection variable\n4. All other requests send `Authorization: Bearer {{token}}`",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8081" },
+    { "key": "token", "value": "" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Staff login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.data && body.data.token) {",
+                  "  pm.collectionVariables.set('token', body.data.token);",
+                  "  pm.test('token captured', () => pm.expect(body.data.token).to.be.a('string'));",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}" }
+          }
+        },
+        {
+          "name": "Guest login",
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/guest-auth/login", "host": ["{{baseUrl}}"], "path": ["api", "guest-auth", "login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"guest@example.com\",\n  \"password\": \"password\"\n}" }
+          }
+        },
+        {
+          "name": "Guest register",
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/guest-auth/register", "host": ["{{baseUrl}}"], "path": ["api", "guest-auth", "register"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Doe\",\n  \"email\": \"jane@example.com\",\n  \"phone\": \"+15550001111\",\n  \"password\": \"password\"\n}" }
+          }
+        },
+        {
+          "name": "Current user",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/auth/me", "host": ["{{baseUrl}}"], "path": ["api", "auth", "me"] }
+          }
+        },
+        {
+          "name": "Create user (ADMIN)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api", "auth", "register"] },
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"newsecretary\",\n  \"password\": \"secretary123\",\n  \"fullName\": \"New Secretary\",\n  \"email\": \"newsecretary@hasmirhotels.com\",\n  \"role\": \"SECRETARY\",\n  \"department\": \"Front Desk\",\n  \"position\": \"Secretary\"\n}" }
+          }
+        },
+        {
+          "name": "List users (ADMIN)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/auth/users", "host": ["{{baseUrl}}"], "path": ["api", "auth", "users"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rooms",
+      "item": [
+        {
+          "name": "List rooms (public)",
+          "request": {
+            "method": "GET",
+            "auth": { "type": "noauth" },
+            "url": {
+              "raw": "{{baseUrl}}/api/rooms?page=0&size=10&sortBy=roomId&sortDir=asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "rooms"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "10" },
+                { "key": "sortBy", "value": "roomId" },
+                { "key": "sortDir", "value": "asc" },
+                { "key": "search", "value": "", "disabled": true }
+              ]
+            }
+          }
+        },
+        { "name": "Get room", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/rooms/1", "host": ["{{baseUrl}}"], "path": ["api", "rooms", "1"] } } },
+        {
+          "name": "Create room (ADMIN/MANAGER)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/rooms", "host": ["{{baseUrl}}"], "path": ["api", "rooms"] },
+            "body": { "mode": "raw", "raw": "{\n  \"roomNumber\": \"701\",\n  \"roomType\": \"Deluxe Suite\",\n  \"floor\": 7,\n  \"capacity\": 2,\n  \"pricePerNight\": 199.99,\n  \"roomStatus\": \"Available\"\n}" }
+          }
+        },
+        {
+          "name": "Update room",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/rooms/1", "host": ["{{baseUrl}}"], "path": ["api", "rooms", "1"] },
+            "body": { "mode": "raw", "raw": "{\n  \"roomNumber\": \"101\",\n  \"roomType\": \"Standard Room\",\n  \"floor\": 1,\n  \"capacity\": 2,\n  \"pricePerNight\": 150,\n  \"roomStatus\": \"Available\"\n}" }
+          }
+        },
+        { "name": "Delete room (ADMIN/MANAGER)", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/rooms/1", "host": ["{{baseUrl}}"], "path": ["api", "rooms", "1"] } } },
+        { "name": "Rooms by status", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/rooms/status/Available", "host": ["{{baseUrl}}"], "path": ["api", "rooms", "status", "Available"] } } }
+      ]
+    },
+    {
+      "name": "Guests",
+      "item": [
+        { "name": "List guests", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/guests?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "guests"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } },
+        { "name": "Get guest", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/guests/1", "host": ["{{baseUrl}}"], "path": ["api", "guests", "1"] } } },
+        {
+          "name": "Create guest",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/guests", "host": ["{{baseUrl}}"], "path": ["api", "guests"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Walker\",\n  \"gender\": \"Female\",\n  \"phone\": \"+15550002222\",\n  \"email\": \"alice.walker@example.com\",\n  \"nationality\": \"American\",\n  \"address\": \"42 Sunset Blvd, Los Angeles\"\n}" }
+          }
+        },
+        { "name": "Update guest", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/guests/1", "host": ["{{baseUrl}}"], "path": ["api", "guests", "1"] }, "body": { "mode": "raw", "raw": "{\n  \"phone\": \"+15550009999\"\n}" } } },
+        { "name": "Delete guest (ADMIN/MANAGER)", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/guests/1", "host": ["{{baseUrl}}"], "path": ["api", "guests", "1"] } } }
+      ]
+    },
+    {
+      "name": "Reservations",
+      "item": [
+        { "name": "List reservations", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reservations?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "reservations"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } },
+        { "name": "Get reservation", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reservations/1", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1"] } } },
+        {
+          "name": "Create reservation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/reservations", "host": ["{{baseUrl}}"], "path": ["api", "reservations"] },
+            "body": { "mode": "raw", "raw": "{\n  \"room\": { \"roomId\": 3 },\n  \"guest\": { \"guestId\": 1 },\n  \"checkInDate\": \"2027-03-01\",\n  \"checkOutDate\": \"2027-03-04\",\n  \"reservationStatus\": \"Reserved\"\n}" }
+          }
+        },
+        { "name": "Update reservation", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/reservations/1", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1"] }, "body": { "mode": "raw", "raw": "{\n  \"checkOutDate\": \"2027-03-05\"\n}" } } },
+        { "name": "Cancel reservation", "request": { "method": "PUT", "url": { "raw": "{{baseUrl}}/api/reservations/1/cancel", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1", "cancel"] } } },
+        { "name": "Approve reservation", "request": { "method": "PUT", "url": { "raw": "{{baseUrl}}/api/reservations/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1", "approve"] } } },
+        { "name": "Check in", "request": { "method": "PUT", "url": { "raw": "{{baseUrl}}/api/reservations/1/checkin", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1", "checkin"] } } },
+        { "name": "Check out", "request": { "method": "PUT", "url": { "raw": "{{baseUrl}}/api/reservations/1/checkout", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1", "checkout"] } } },
+        { "name": "Delete reservation (ADMIN/MANAGER)", "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/api/reservations/1", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "1"] } } },
+        { "name": "Today's check-ins", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reservations/checkins/today", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "checkins", "today"] } } },
+        { "name": "Today's check-outs", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reservations/checkouts/today", "host": ["{{baseUrl}}"], "path": ["api", "reservations", "checkouts", "today"] } } }
+      ]
+    },
+    {
+      "name": "Payments & Finance",
+      "item": [
+        { "name": "List payments", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/payments?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "payments"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } },
+        {
+          "name": "Create payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/payments", "host": ["{{baseUrl}}"], "path": ["api", "payments"] },
+            "body": { "mode": "raw", "raw": "{\n  \"reservation\": { \"reservationId\": 1 },\n  \"paymentMethod\": \"Credit Card\",\n  \"paymentDate\": \"2027-03-01\",\n  \"amount\": 450,\n  \"paymentStatus\": \"Paid\"\n}" }
+          }
+        },
+        { "name": "List expenses", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/expenses?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "expenses"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } },
+        {
+          "name": "Create expense",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/api/expenses", "host": ["{{baseUrl}}"], "path": ["api", "expenses"] },
+            "body": { "mode": "raw", "raw": "{\n  \"category\": \"Utilities\",\n  \"description\": \"Electricity bill March\",\n  \"amount\": 2500,\n  \"expenseDate\": \"2027-03-01\",\n  \"status\": \"Pending\",\n  \"recordedBy\": \"accountant\"\n}" }
+          }
+        },
+        { "name": "Expense total", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/expenses/total", "host": ["{{baseUrl}}"], "path": ["api", "expenses", "total"] } } },
+        { "name": "List invoices", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/invoices?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "invoices"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } }
+      ]
+    },
+    {
+      "name": "Operations",
+      "item": [
+        { "name": "List housekeeping", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/housekeeping?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "housekeeping"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } },
+        { "name": "List maintenance", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/maintenance?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "maintenance"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } },
+        { "name": "Update maintenance status", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/api/maintenance/1/status", "host": ["{{baseUrl}}"], "path": ["api", "maintenance", "1", "status"] }, "body": { "mode": "raw", "raw": "{\n  \"status\": \"IN_PROGRESS\"\n}" } } },
+        { "name": "List staff", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/staff?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "staff"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } }
+      ]
+    },
+    {
+      "name": "Dashboard & Reports",
+      "item": [
+        { "name": "Dashboard stats", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/dashboard/stats", "host": ["{{baseUrl}}"], "path": ["api", "dashboard", "stats"] } } },
+        { "name": "Revenue report", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reports/revenue", "host": ["{{baseUrl}}"], "path": ["api", "reports", "revenue"] } } },
+        { "name": "Monthly revenue", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reports/revenue/monthly", "host": ["{{baseUrl}}"], "path": ["api", "reports", "revenue", "monthly"] } } },
+        { "name": "Occupancy report", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/reports/occupancy", "host": ["{{baseUrl}}"], "path": ["api", "reports", "occupancy"] } } }
+      ]
+    },
+    {
+      "name": "Notifications & Audit",
+      "item": [
+        { "name": "My notifications", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/notifications?userId=1", "host": ["{{baseUrl}}"], "path": ["api", "notifications"], "query": [{ "key": "userId", "value": "1" }] } } },
+        { "name": "Unread count", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/notifications/unread-count/1", "host": ["{{baseUrl}}"], "path": ["api", "notifications", "unread-count", "1"] } } },
+        { "name": "Audit log (ADMIN)", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/api/audit?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["api", "audit"], "query": [{ "key": "page", "value": "0" }, { "key": "size", "value": "10" }] } } }
+      ]
+    }
+  ]
+}

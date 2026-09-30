@@ -2,18 +2,21 @@
 
 [![CI](https://github.com/felix202422/Hotel_Management_System/actions/workflows/ci.yml/badge.svg)](https://github.com/felix202422/Hotel_Management_System/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Java](https://img.shields.io/badge/Java-17-orange)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-brightgreen)
-![React](https://img.shields.io/badge/React-18-61dafb)
+![Java](https://img.shields.io/badge/Java-25-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1-brightgreen)
+![React](https://img.shields.io/badge/React-19-61dafb)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-336791)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED)
 
-A full-stack hotel reservation and management system built with React, Java Spring Boot, and PostgreSQL — with a public visitor site, a guest portal, and role-specific dashboards for six staff roles.
+A full-stack hotel reservation and management system built with React 19, Spring Boot 4.1, and PostgreSQL 18 — with a public visitor site, a guest portal, and role-specific dashboards for five staff roles.
 
 ## Tech Stack
 
-- **Frontend:** React 18, React Router 6, Axios, Recharts, Lucide Icons, Vite 7
-- **Backend:** Java 17, Spring Boot 3.2 (Web, Data JPA, Security, Validation)
-- **Database:** PostgreSQL
+- **Frontend:** React 19.3, React Router 7, Axios 1.x, Recharts 3, Lucide Icons, Vite 8 (ES2023+)
+- **Backend:** Java 25 LTS, Spring Boot 4.1.1 (Web MVC, Data JPA, Security 7, Validation)
+- **Database:** PostgreSQL 18
 - **Authentication:** JWT (stateless, Bearer tokens)
+- **Development:** IntelliJ IDEA / VS Code, Git & GitHub, Postman, Docker & Docker Compose
 
 ## Features
 
@@ -31,17 +34,38 @@ A full-stack hotel reservation and management system built with React, Java Spri
 | ADMIN | `/admin` | Full access, user & staff management, audit log, settings |
 | MANAGER | `/manager` | Read oversight of all operations; manages staff |
 | SECRETARY | `/secretary` | Reservations, check-in/out, guests, payments |
-| HOUSEKEEPER / HOUSEKEEPING_STAFF | `/housekeeping` | Room cleaning tasks and status |
+| HOUSEKEEPING_STAFF | `/housekeeping` | Room cleaning tasks and status |
 | ACCOUNTANT | `/accountant` | Payments, invoices, expenses, revenue, reports |
-| MAINTENANCE / MAINTENANCE_STAFF | `/maintenance` | Maintenance requests and tasks |
+| MAINTENANCE_STAFF | `/maintenance` | Maintenance requests and tasks |
 | GUEST | `/guest` | Personal dashboard and booking |
 
 ## Prerequisites
 
-- Node.js 18+
-- Java 17+ (JDK)
-- Maven 3.8+
-- PostgreSQL 14+
+- Node.js 20.19+ (22 LTS recommended)
+- JDK 25 (Java 17+ works; the project targets 25)
+- Maven 3.9.x
+- PostgreSQL 18
+- Docker & Docker Compose (optional, for containerized setup)
+
+## Quick Start with Docker
+
+The fastest way to run the whole stack — PostgreSQL 18, backend, and frontend:
+
+```bash
+# 1. Create .env with your secrets
+cat > .env <<'EOF'
+DB_USERNAME=postgres
+DB_PASSWORD=your-secret
+JWT_SECRET=replace-with-a-long-random-secret-at-least-32-chars
+EOF
+
+# 2. Build and start everything
+docker compose up --build
+```
+
+- Frontend: http://localhost:5173 (nginx, proxies /api to the backend)
+- Backend API: http://localhost:8081
+- PostgreSQL 18: localhost:5432 (persisted in the `pgdata` volume)
 
 ## Database Setup
 
@@ -85,7 +109,9 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-The backend runs on **http://localhost:8081** (override via `SERVER_PORT` in `.env`).
+The backend runs on **http://localhost:8081** (override via `SERVER_PORT` in `.env`). See `postman/` for a ready-made API collection.
+
+> On first boot the app fails fast with a clear message if `DB_PASSWORD` or `JWT_SECRET` are missing.
 
 > On first boot the app fails fast with a clear message if `DB_PASSWORD` or `JWT_SECRET` are missing.
 

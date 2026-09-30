@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router'
 import {
   LayoutDashboard, Inbox, Calendar, Megaphone, Hotel, Shield,
   Package, CreditCard, Star, LogIn, LogOut, ChevronRight,

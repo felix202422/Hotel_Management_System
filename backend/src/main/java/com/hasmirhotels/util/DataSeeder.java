@@ -55,16 +55,16 @@ public class DataSeeder {
                 "secretary123", "secretary", "SECRETARY", "+255700000003", "Front Desk", "Secretary"));
 
         adminRepository.save(createAdmin("Maria Housekeeper", "housekeeper@hasmirhotels.com",
-                "housekeeper123", "housekeeper", "HOUSEKEEPER", "+255700000004", "Housekeeping", "Head Housekeeper"));
+                "housekeeper123", "housekeeper", "HOUSEKEEPING_STAFF", "+255700000004", "Housekeeping", "Head Housekeeper"));
 
         adminRepository.save(createAdmin("David Accountant", "accountant@hasmirhotels.com",
                 "accountant123", "accountant", "ACCOUNTANT", "+255700000005", "Finance", "Accountant"));
 
         adminRepository.save(createAdmin("Peter Maintenance", "maintenance@hasmirhotels.com",
-                "maintenance123", "maintenance", "MAINTENANCE", "+255700000006", "Maintenance", "Maintenance Officer"));
+                "maintenance123", "maintenance", "MAINTENANCE_STAFF", "+255700000006", "Maintenance", "Maintenance Officer"));
 
         adminRepository.save(createAdmin("Linda Maintenance", "linda.maintenance@hasmirhotels.com",
-                "maintenance123", "linda.maintenance", "MAINTENANCE", "+255700000007", "Maintenance", "Maintenance Staff"));
+                "maintenance123", "linda.maintenance", "MAINTENANCE_STAFF", "+255700000007", "Maintenance", "Maintenance Staff"));
 
         System.out.println("7 admin/staff users created.");
     }

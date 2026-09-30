@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import {
   Search, Users, Wifi, Car, Coffee, Bath, Wind, Star, SlidersHorizontal, X
 } from 'lucide-react'

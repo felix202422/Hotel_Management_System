@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router'
 import { Search, Bell, Menu, X, LogOut } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import './Header.css'

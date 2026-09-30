@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router'
 import { Hotel, Eye, EyeOff } from 'lucide-react'
 import api from '../api/axios'
 import './Login.css'

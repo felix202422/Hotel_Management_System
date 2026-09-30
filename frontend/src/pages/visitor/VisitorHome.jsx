@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import {
   Wifi, Waves, UtensilsCrossed, Dumbbell, Car, Sparkles,
   ArrowRight, Star, MapPin, Phone, Mail

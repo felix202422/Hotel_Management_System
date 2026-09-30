@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { Check, ArrowLeft } from 'lucide-react'
 import api from '../api/axios'
 

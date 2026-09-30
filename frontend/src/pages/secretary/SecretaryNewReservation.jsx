@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { CheckCircle, User, Bed, Calendar, FileText, ArrowLeft, ArrowRight } from 'lucide-react'
 import api from '../../api/axios'
 

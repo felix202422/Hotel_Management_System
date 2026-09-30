@@ -21,16 +21,14 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // Role names exactly as stored in the "role" claim of issued JWTs.
-    private static final String ADMIN = "ADMIN";
-    private static final String MANAGER = "MANAGER";
-    private static final String SECRETARY = "SECRETARY";
-    private static final String ACCOUNTANT = "ACCOUNTANT";
-    private static final String HOUSEKEEPER = "HOUSEKEEPER";
-    private static final String HOUSEKEEPING_STAFF = "HOUSEKEEPING_STAFF";
-    private static final String MAINTENANCE = "MAINTENANCE";
-    private static final String MAINTENANCE_STAFF = "MAINTENANCE_STAFF";
-    private static final String GUEST = "GUEST";
+    // Canonical 7-role model (single authority string per role).
+    public static final String ADMIN = "ADMIN";
+    public static final String MANAGER = "MANAGER";
+    public static final String SECRETARY = "SECRETARY";
+    public static final String ACCOUNTANT = "ACCOUNTANT";
+    public static final String HOUSEKEEPING_STAFF = "HOUSEKEEPING_STAFF";
+    public static final String MAINTENANCE_STAFF = "MAINTENANCE_STAFF";
+    public static final String GUEST = "GUEST";
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
@@ -87,34 +85,19 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/payments", "/api/payments/**")
                         .hasAnyRole(ADMIN, MANAGER, ACCOUNTANT, SECRETARY)
 
-                // ---------- Expenses ----------
-                .requestMatchers(HttpMethod.POST, "/api/expenses").hasAnyRole(ADMIN, ACCOUNTANT)
-                .requestMatchers(HttpMethod.PUT, "/api/expenses/**").hasAnyRole(ADMIN, ACCOUNTANT)
-                .requestMatchers(HttpMethod.DELETE, "/api/expenses/**").hasAnyRole(ADMIN, ACCOUNTANT)
-                .requestMatchers(HttpMethod.GET, "/api/expenses", "/api/expenses/**")
-                        .hasAnyRole(ADMIN, MANAGER, ACCOUNTANT)
+                // ---------- Expenses / Invoices ----------
+                .requestMatchers("/api/expenses/**").hasAnyRole(ADMIN, MANAGER, ACCOUNTANT)
+                .requestMatchers("/api/invoices/**").hasAnyRole(ADMIN, MANAGER, ACCOUNTANT)
 
-                // ---------- Invoices ----------
-                .requestMatchers(HttpMethod.POST, "/api/invoices").hasAnyRole(ADMIN, ACCOUNTANT)
-                .requestMatchers(HttpMethod.PUT, "/api/invoices/**").hasAnyRole(ADMIN, ACCOUNTANT)
-                .requestMatchers(HttpMethod.DELETE, "/api/invoices/**").hasAnyRole(ADMIN, ACCOUNTANT)
-                .requestMatchers(HttpMethod.GET, "/api/invoices", "/api/invoices/**")
-                        .hasAnyRole(ADMIN, MANAGER, ACCOUNTANT)
-
-                // ---------- Housekeeping ----------
-                .requestMatchers("/api/housekeeping/**")
-                        .hasAnyRole(ADMIN, MANAGER, HOUSEKEEPER, HOUSEKEEPING_STAFF)
-
-                // ---------- Maintenance ----------
-                .requestMatchers("/api/maintenance/**")
-                        .hasAnyRole(ADMIN, MANAGER, MAINTENANCE, MAINTENANCE_STAFF)
+                // ---------- Housekeeping / Maintenance ----------
+                .requestMatchers("/api/housekeeping/**").hasAnyRole(ADMIN, MANAGER, HOUSEKEEPING_STAFF)
+                .requestMatchers("/api/maintenance/**").hasAnyRole(ADMIN, MANAGER, MAINTENANCE_STAFF)
 
                 // ---------- Staff management ----------
                 .requestMatchers("/api/staff/**").hasAnyRole(ADMIN, MANAGER)
 
-                // ---------- Everything else under /api requires a valid token ----------
+                // ---------- Fallbacks ----------
                 .requestMatchers("/api/**").authenticated()
-
                 .anyRequest().denyAll()
             )
             .exceptionHandling(ex -> ex
