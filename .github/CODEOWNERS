@@ -1,0 +1,14 @@
+* @felix202422
+
+# Backend (Spring Boot / Java)
+/backend/ @felix202422
+
+# Frontend (React / Vite)
+/frontend/ @felix202422
+
+# Database scripts
+/database/ @felix202422
+
+# Security-sensitive configuration
+/backend/src/main/java/com/hasmirhotels/security/ @felix202422
+/backend/src/main/resources/application.properties @felix202422

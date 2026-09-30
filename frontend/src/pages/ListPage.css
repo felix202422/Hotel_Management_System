@@ -1,0 +1,36 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.empty {
+  text-align: center;
+  color: #94a3b8;
+  padding: 48px !important;
+  font-size: 0.95rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-available, .badge-confirmed, .badge-completed, .badge-paid {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.badge-occupied, .badge-pending, .badge-unpaid {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+
+.badge-maintenance, .badge-cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+}

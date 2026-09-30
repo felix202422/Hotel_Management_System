@@ -1,0 +1,23 @@
+name: Question
+description: Ask a question about setup, usage, or the codebase
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: Please check the README and existing issues first.
+    validations:
+      required: true
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Setup / installation
+        - Using the system
+        - API behavior
+        - Contributing
+        - Other
+    validations:
+      required: true

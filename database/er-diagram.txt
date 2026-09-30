@@ -1,0 +1,64 @@
+┌─────────────────────────────────────────────────────────────────┐
+│                   HASMIR HOTELS - ER DIAGRAM                    │
+└─────────────────────────────────────────────────────────────────┘
+
+  ┌───────────┐          ┌──────────────┐          ┌───────────┐
+  │   Admin   │          │    Room      │          │   Guest   │
+  │───────────│          │──────────────│          │───────────│
+  │ id (PK)   │          │ room_id (PK) │          │ guest_id  │
+  │ fullName  │          │ roomNumber   │◄─────────┤ firstName │
+  │ email     │          │ roomType     │          │ lastName  │
+  │ password  │          │ floor        │          │ phone     │
+  │ username  │          │ capacity     │          │ email     │
+  │ role      │          │ pricePerNight│          │ nationality│
+  └───────────┘          │ roomStatus   │          │ address   │
+                         └──────┬───────┘          └─────┬─────┘
+                                │ 1                      │ 1
+                                │                        │
+                                │ has many               │ has many
+                                │                        │
+                         ┌──────┴───────┐          ┌─────┴─────┐
+                         │ Reservation  │◄─────────┤           │
+                         │──────────────│   many    │           │
+                         │ reservationId│───────────┘           │
+                         │ checkInDate  │                        │
+                         │ checkOutDate │                        │
+                         │ totalPrice   │                        │
+                         │ status       │                        │
+                         └──────┬───────┘                        │
+                                │ 1                             │
+                                │                                │
+                                │ has one                        │
+                                │                                │
+                         ┌──────┴───────┐                        │
+                         │   Payment    │                        │
+                         │──────────────│                        │
+                         │ paymentId(PK)│                        │
+                         │ paymentMethod│                        │
+                         │ paymentDate  │                        │
+                         │ amount       │                        │
+                         │ paymentStatus│                        │
+                         └──────────────┘                        │
+
+  ┌───────────┐
+  │ Housekeep │
+  │───────────│
+  │ hk_id(PK) │
+  │ assignedBy│
+  │ status    │
+  │ date      │
+  │ roomId(FK)│─────► Many Housekeep records per Room
+  └───────────┘
+
+RELATIONSHIPS:
+  Room (1) ──────────► (many) Reservation
+  Guest (1) ─────────► (many) Reservation
+  Reservation (1) ───► (one) Payment
+  Room (1) ──────────► (many) Housekeeping
+
+OOP CONCEPTS:
+  1. Encapsulation: Private fields, getters, setters in all entity classes
+  2. Inheritance: Admin extends User (abstract parent)
+  3. Polymorphism: displayRole() overridden in Admin
+  4. Abstraction: HotelService abstract class with concrete service implementations
+  5. Association: Entity relationships with @OneToMany, @ManyToOne, @OneToOne
