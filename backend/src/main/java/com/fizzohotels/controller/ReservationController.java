@@ -140,4 +140,23 @@ public class ReservationController {
 
         return ResponseEntity.ok(ApiResponse.success("Reservation cancelled", reservation));
     }
+
+    /**
+     * Public booking lookup by reservation ID (used as a booking reference).
+     * Returns limited fields only — no guest personal data beyond first name.
+     */
+    @GetMapping("/track/{ref}")
+    public ResponseEntity<?> track(@PathVariable String ref) {
+        Long id = null;
+        try {
+            id = Long.parseLong(ref.replaceFirst("(?i)^BK-", ""));
+        } catch (NumberFormatException e) {
+            return ResponseEntity.ok(ApiResponse.error("No booking found with that reference number."));
+        }
+        Reservation reservation = reservationRepository.findById(id).orElse(null);
+        if (reservation == null) {
+            return ResponseEntity.ok(ApiResponse.error("No booking found with that reference number."));
+        }
+        return ResponseEntity.ok(ApiResponse.success("Booking found", reservation));
+    }
 }

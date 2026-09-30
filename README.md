@@ -147,11 +147,15 @@ All list endpoints support `?page=&size=&sortBy=&sortDir=&search=` pagination (p
 | POST | `/api/guest-auth/register` | Guest self-registration |
 | POST | `/api/guest-auth/login` | Guest login |
 | GET | `/api/rooms` | Public room browsing |
+| GET | `/api/reservations/track/{ref}` | Public booking lookup by reference (`BK-` prefix optional) |
+| POST | `/api/contact` | Visitor contact form submission |
 
-### Auth & users (admin)
+### Self-service (any authenticated staff user)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/auth/me` | Current authenticated user |
+| PUT | `/api/auth/me` | Update own profile (name, email, phone) |
+| PUT | `/api/auth/me/password` | Change own password (requires current password) |
 | POST | `/api/auth/register` | Create user (ADMIN only) |
 | GET | `/api/auth/users` | List users (ADMIN only) |
 | PUT | `/api/auth/users/{id}` | Update user (ADMIN only) |

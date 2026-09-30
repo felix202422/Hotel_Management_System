@@ -154,6 +154,60 @@ public class AuthController {
         return ResponseEntity.ok(ApiResponse.success("User status updated successfully", authResponse));
     }
 
+    /**
+     * Self-service profile update: any authenticated staff user may update
+     * their own fullName, email, and phone — but not their role or status.
+     */
+    @PutMapping("/me")
+    public ResponseEntity<?> updateMe(@RequestBody Map<String, String> updates) {
+        String username = getCurrentUsername();
+        if (username == null) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Not authenticated"));
+        }
+        Admin admin = adminRepository.findByUsername(username).orElse(null);
+        if (admin == null) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("User not found"));
+        }
+        if (updates.containsKey("fullName") && updates.get("fullName") != null && !updates.get("fullName").isBlank()) {
+            admin.setFullName(updates.get("fullName").trim());
+        }
+        if (updates.containsKey("email") && updates.get("email") != null && !updates.get("email").isBlank()) {
+            admin.setEmail(updates.get("email").trim());
+        }
+        if (updates.containsKey("phone") && updates.get("phone") != null) {
+            admin.setPhone(updates.get("phone").trim());
+        }
+        adminRepository.save(admin);
+        AuthResponse authResponse = buildAuthResponse(null, admin, "Profile updated successfully");
+        return ResponseEntity.ok(ApiResponse.success("Profile updated successfully", authResponse));
+    }
+
+    /**
+     * Self-service password change: requires the current password.
+     */
+    @PutMapping("/me/password")
+    public ResponseEntity<?> changeMyPassword(@RequestBody Map<String, String> body) {
+        String username = getCurrentUsername();
+        if (username == null) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Not authenticated"));
+        }
+        Admin admin = adminRepository.findByUsername(username).orElse(null);
+        if (admin == null) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("User not found"));
+        }
+        String currentPassword = body.get("currentPassword");
+        String newPassword = body.get("newPassword");
+        if (currentPassword == null || newPassword == null || newPassword.length() < 6) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Current password and a new password of at least 6 characters are required"));
+        }
+        if (!passwordEncoder.matches(currentPassword, admin.getPassword())) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Current password is incorrect"));
+        }
+        admin.setPassword(passwordEncoder.encode(newPassword));
+        adminRepository.save(admin);
+        return ResponseEntity.ok(ApiResponse.success("Password changed successfully", null));
+    }
+
     private AuthResponse buildAuthResponse(String token, Admin admin, String message) {
         AuthResponse response = new AuthResponse();
         response.setToken(token);
