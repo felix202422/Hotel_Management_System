@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import RoleBasedLayout from './components/RoleBasedLayout'
 import VisitorLayout from './pages/visitor/VisitorLayout'
+import useRipple from './hooks/useRipple'
 
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -136,6 +137,8 @@ function LoginRedirect() {
 }
 
 export default function App() {
+  useRipple()
+
   return (
     <ErrorBoundary>
       <AuthProvider>

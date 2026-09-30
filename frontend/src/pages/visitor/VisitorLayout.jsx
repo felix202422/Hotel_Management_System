@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Outlet, Link, useLocation } from 'react-router'
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react'
+import PageTransition from '../../components/PageTransition'
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -222,7 +223,9 @@ export default function VisitorLayout() {
       )}
 
       <main style={{ flex: 1 }}>
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
 
       <footer style={s.footer}>

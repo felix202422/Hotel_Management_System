@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet } from 'react-router'
 import RoleBasedSidebar from './RoleBasedSidebar'
 import Header from './Header'
+import PageTransition from './PageTransition'
 import './Layout.css'
 
 export default function RoleBasedLayout({ role }) {
@@ -14,7 +15,9 @@ export default function RoleBasedLayout({ role }) {
       <div className={`main-area${collapsed ? ' expanded' : ''}`}>
         <Header toggleSidebar={toggle} collapsed={collapsed} role={role} />
         <main className="content">
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </main>
       </div>
     </div>

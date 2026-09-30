@@ -1,4 +1,6 @@
 import { Link } from 'react-router'
+import CountUp from '../../components/CountUp'
+import Reveal from '../../components/Reveal'
 import {
   Wifi, Waves, UtensilsCrossed, Dumbbell, Car, Sparkles,
   ArrowRight, Star, MapPin, Phone, Mail
@@ -210,12 +212,13 @@ export default function VisitorHome() {
         <div style={s.heroOverlay} />
         <div style={s.heroInner}>
           <div style={s.heroText}>
-            <div style={s.heroBadge}>
+            <div style={s.heroBadge} className="hover-glow">
+              <span className="pulse-dot" style={{ marginRight: 8 }} />
               <Star size={14} style={{ color: '#FACC15' }} /> Rated #1 in Metro City
             </div>
             <h1 style={s.heroTitle}>
               Welcome to<br />
-              <span style={{ color: '#60A5FA' }}>Fizzo Hotels</span>
+              <span className="gradient-text">Fizzo Hotels</span>
             </h1>
             <p style={s.heroTagline}>
               Comfort &bull; Luxury &bull; Smart Hospitality<br />
@@ -231,21 +234,21 @@ export default function VisitorHome() {
             </div>
             <div style={s.heroStats}>
               <div>
-                <div style={s.heroStatNum}>150+</div>
+                <div style={s.heroStatNum}><CountUp end={150} suffix="+" /></div>
                 <div style={s.heroStatLabel}>Luxury Rooms</div>
               </div>
               <div>
-                <div style={s.heroStatNum}>50k+</div>
+                <div style={s.heroStatNum}><CountUp end={50} suffix="k+" /></div>
                 <div style={s.heroStatLabel}>Happy Guests</div>
               </div>
               <div>
-                <div style={s.heroStatNum}>4.9</div>
+                <div style={s.heroStatNum}><CountUp end={4.9} decimals={1} /></div>
                 <div style={s.heroStatLabel}>Guest Rating</div>
               </div>
             </div>
           </div>
-          <div style={s.heroVisual}>
-            <div style={s.heroCard}>
+          <div style={s.heroVisual} className="float-slow">
+            <div style={s.heroCard} className="hover-lift">
               <div style={s.heroCardTitle}>Quick Booking</div>
               <div style={s.heroCardField}><MapPin size={14} style={{ marginRight: 8 }} /> 123 Luxury Avenue, Metro City</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
@@ -273,9 +276,11 @@ export default function VisitorHome() {
       </section>
 
       <section style={s.section}>
-        <h2 style={s.sectionTitle}>Featured Rooms</h2>
-        <p style={s.sectionSub}>Discover our handpicked selection of premium rooms and suites</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 28 }}>
+        <Reveal>
+          <h2 style={s.sectionTitle}>Featured Rooms</h2>
+          <p style={s.sectionSub}>Discover our handpicked selection of premium rooms and suites</p>
+        </Reveal>
+        <div className="stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 28 }}>
           {ROOMS.map(room => (
             <div key={room.type} style={s.roomCard}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.1)' }}
@@ -309,14 +314,13 @@ export default function VisitorHome() {
 
       <section style={{ background: '#F7F9FC', padding: '80px 0' }}>
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Hotel Facilities</h2>
-          <p style={s.sectionSub}>Everything you need for a perfect stay</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 24 }}>
+          <Reveal>
+            <h2 style={s.sectionTitle}>Hotel Facilities</h2>
+            <p style={s.sectionSub}>Everything you need for a perfect stay</p>
+          </Reveal>
+          <div className="stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 24 }}>
             {FACILITIES.map(f => (
-              <div key={f.name} style={s.facilityCard}
-                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'none'}
-              >
+              <div key={f.name} style={s.facilityCard} className="hover-lift hover-glow">
                 <div style={{ ...s.facilityIcon, background: f.color, color: f.iconColor }}>
                   <f.icon size={28} />
                 </div>
@@ -328,25 +332,26 @@ export default function VisitorHome() {
       </section>
 
       <section style={s.section}>
-        <h2 style={s.sectionTitle}>Our Services</h2>
-        <p style={s.sectionSub}>Premium services to enhance your stay</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
+        <Reveal>
+          <h2 style={s.sectionTitle}>Our Services</h2>
+          <p style={s.sectionSub}>Premium services to enhance your stay</p>
+        </Reveal>
+        <div className="stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
           {SERVICES.map(svc => (
-            <div key={svc.title} style={s.serviceCard}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'none'}
-            >
+            <Reveal key={svc.title} className="hover-lift" as="div" style={{ ...s.serviceCard }}>
               <h3 style={{ fontWeight: 700, fontSize: '1.05rem', marginBottom: 8 }}>{svc.title}</h3>
               <p style={{ color: '#6B7280', fontSize: '0.88rem', lineHeight: 1.6 }}>{svc.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section style={{ background: 'linear-gradient(135deg, #0F172A, #1E3A5F)', padding: '80px 0' }}>
         <div style={s.section}>
-          <h2 style={{ ...s.sectionTitle, color: '#fff' }}>Get in Touch</h2>
-          <p style={{ ...s.sectionSub, color: 'rgba(255,255,255,0.6)' }}>We'd love to hear from you</p>
+          <Reveal>
+            <h2 style={{ ...s.sectionTitle, color: '#fff' }}>Get in Touch</h2>
+            <p style={{ ...s.sectionSub, color: 'rgba(255,255,255,0.6)' }}>We'd love to hear from you</p>
+          </Reveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 32, maxWidth: 900, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', color: '#fff' }}>
               <div style={{ width: 56, height: 56, borderRadius: 16, background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
